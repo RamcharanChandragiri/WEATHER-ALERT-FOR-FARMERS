@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard - Weather Alerts</title>
+    <link rel="stylesheet" href="css/style.css">
+    </head>
+<body>
+
+    <div class="dashboard-container">
+
+        <div id="alert-banner" class="alert-banner critical">
+            🚨 CRITICAL ALERT: Heavy rain expected. Avoid irrigation and fertilizer today.
+        </div>
+
+        <header class="dashboard-header">
+            <h1 class="welcome-message">🌾 Welcome Back, Farmer SRINIVAS REDDY!</h1>
+                  <div class="district-selector" style="margin: 20px 0; text-align: center;">
+          <label for="district-select" style="font-weight:bold; font-size:14px;">Select District:</label>
+          <select id="district-select" onchange="fetchWeatherData()" style="padding:8px 12px; border-radius:6px; font-size:14px;">
+              <option value="default" disabled selected>Hyderabad</option>
+          </select>
+      </div>
+        </header>
+
+        <main class="dashboard-main">
+            <!-- Telangana District Selector -->
+
+
+            <section class="weather-data-section">
+                <h2>Current Conditions</h2>
+                <div class="weather-cards">
+
+                    <div class="card weather-card temperature-card">
+                        <img src="images/icon-temp.svg" alt="Temperature Icon"> <h3>Temperature</h3>
+                        <p id="temp-value" class="value">25°C</p>
+                    </div>
+
+                    <div class="card weather-card humidity-card">
+                        <img src="images/icon-humidity.svg" alt="Humidity Icon"> <h3>Humidity</h3>
+                        <p id="humidity-value" class="value">50%</p>
+                    </div>
+
+                    <div class="card weather-card rainfall-card">
+                        <img src="images/icon-rainfall.svg" alt="Rainfall Icon"> <h3>Rainfall (24h)</h3>
+                        <p id="rainfall-value" class="value">5mm</p>
+                        <p id="rainfall-status" class="status-indicator"></p>
+                    </div>
+
+                    <div class="card weather-card windspeed-card">
+                        <img src="images/icon-wind.svg" alt="Wind Icon"> <h3>Wind Speed</h3>
+                        <p id="windspeed-value" class="value">20km/h</p>
+                        <p id="windspeed-status" class="status-indicator"></p>
+                    </div>
+
+                </div>
+            </section>
+            
+            <hr>
+
+            <section class="advisory-section">
+                <h2>🌱 Agricultural Advisory</h2>
+                <div id="advisory-message" class="card advisory-card normal">
+                    <p>Normal conditions. Proceed with scheduled operations.</p>
+                </div>
+            </section>
+            
+            <hr>
+
+            <section class="weekly-trends-section">
+                <h2>📈 Weekly Weather Trends (7-Day Forecast)</h2>
+                <div class="chart-placeholder card">
+                    <p>Line chart for Temperature trends (requires Chart.js)</p>
+                    </div>
+                <div class="chart-placeholder card">
+                    <p>Bar chart for Rainfall trends (requires Chart.js)</p>
+                    <img src="/graph.jpg" alt="bar-graph" style="width:100%; justify-content: center;">
+                    </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/frontend/server1.js"></script>
+</body>
+</html>

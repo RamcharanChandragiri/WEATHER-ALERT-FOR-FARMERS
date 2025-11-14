@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmer Weather Alert</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-image: url("/frontend/crop.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    .overlay {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: rgba(0,0,0,0.45);
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+    .container {
+        position: relative;
+        z-index: 2;
+        width: 380px;
+        background: rgba(255,255,255,0.95);
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+        text-align: center;
+    }
+    h2 {
+        color: #0b4b28;
+        font-size: 26px;
+        margin-bottom: 6px;
+    }
+    p.tagline {
+        color: #21693e;
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+    label {
+        float: left;
+        margin-left: 5%;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #0d3e22;
+    }
+    input {
+        width: 90%;
+        padding: 12px;
+        margin-bottom: 17px;
+        font-size: 14px;
+        border: 1.5px solid #71a982;
+        border-radius: 6px;
+    }
+    input:focus {
+        outline: none;
+        border-color: #18884d;
+        box-shadow: 0 0 6px rgba(24,136,77,0.5);
+    }
+    button {
+        width: 96%;
+        background: #18884d;
+        border: none;
+        padding: 12px;
+        font-size: 16px;
+        color: white;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    button:hover {
+        background: #0f6237;
+    }
+    .footer {
+        margin-top: 14px;
+        font-size: 14px;
+    }
+    .footer a {
+        color: #0f6237;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .footer a:hover { text-decoration: underline; }
+    .forgot-pass { margin-top: 8px; }
+    .forgot-pass a {
+        color: #135c33;
+        font-size: 13px;
+        text-decoration: none;
+    }
+    .forgot-pass a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<div class="container" id="formContainer">
+
+    <!-- Login Form -->
+    <form id="loginForm">
+        <img src="/frontend/farmer.png" alt="Weather Icon" style="width:80px;margin-bottom:12px;">
+        <h2>Farmer Login</h2>
+        <p class="tagline">Stay alert. Protect your crops from extreme weather.</p>
+
+        <label for="username">Email / Username</label>
+        <input type="email" id="username" placeholder="Enter your email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required>
+
+        <button type="submit">Login</button>
+
+        <div class="forgot-pass">
+            <a href="#">Forgot Password?</a>
+        </div>
+
+        <div class="footer">
+            New here? <a onclick="showRegister()">Register your farm</a>
+        </div>
+    </form>
+
+    <!-- Register Form -->
+    <form id="registerForm" style="display:none;">
+        <img src="/frontend/farmer.png" alt="Weather Icon" style="width:80px;margin-bottom:12px;">
+        <h2>Register Your Farm</h2>
+        <p class="tagline">Join to receive weather alerts for your crops.</p>
+
+        <label for="farmName">Farm Name</label>
+        <input type="text" id="farmName" placeholder="Enter your farm name" required>
+
+        <label for="ownerName">Owner Name</label>
+        <input type="text" id="ownerName" placeholder="Enter owner name" required>
+
+        <label for="regEmail">Email</label>
+        <input type="email" id="regEmail" placeholder="Enter your email" required>
+
+        <label for="regPassword">Password</label>
+        <input type="password" id="regPassword" placeholder="Enter password" required>
+
+        <label for="location">Farm Location</label>
+        <input type="text" id="location" placeholder="Enter farm location" required>
+
+        <button type="submit">Register</button>
+
+        <div class="footer">
+            Already have an account? <a onclick="showLogin()">Login</a>
+        </div>
+    </form>
+
+</div>
+
+<script>
+function showRegister() {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('registerForm').style.display = 'block';
+}
+function showLogin() {
+    document.getElementById('registerForm').style.display = 'none';
+    document.getElementById('loginForm').style.display = 'block';
+}
+
+document.getElementById('loginForm').addEventListener('submit', function(e){
+    e.preventDefault(); 
+    // After login redirect to dashboard
+    window.location.href = "dashboard.html";
+});
+
+
+
+document.getElementById('registerForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert("Registration successful! You can now login.");
+    showLogin();
+});
+</script>
+
+</body>
+</html>

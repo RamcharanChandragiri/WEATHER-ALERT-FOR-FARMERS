@@ -1,0 +1,207 @@
+/* General Styling & Fonts */
+:root {
+    --color-primary: #38761d; /* Deep Farm Green */
+    --color-secondary: #a9d18e; /* Light Green */
+    --color-background: #f4f7f4; /* Off-White Background */
+    --color-card-bg: #ffffff;
+    --color-text-dark: #333333;
+    --color-alert-red: #cc0000; /* Critical Red */
+    --color-alert-orange: #ff9900; /* Warning Orange */
+    --color-alert-green: #008000; /* Normal Green */
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header and Location Control */
+.dashboard-header {
+    background-color: var(--color-card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome-message {
+    color: var(--color-primary);
+    font-size: 1.8em;
+}
+
+.location-control label {
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+#location-select {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* Main Content Layout */
+.dashboard-main h2 {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+/* Weather Cards Section */
+.weather-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: var(--color-card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.weather-card {
+    flex: 1 1 200px; /* Allows cards to wrap and be responsive */
+    text-align: center;
+    border-top: 5px solid var(--color-secondary);
+}
+
+.weather-card img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.weather-card h3 {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.weather-card .value {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+.status-indicator {
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-top: 5px;
+    padding: 3px 8px;
+    border-radius: 5px;
+}
+
+/* Color-Coding for High Risk */
+.status-indicator.high-risk {
+    color: var(--color-alert-red);
+    background-color: #ffdddd;
+    border: 1px solid var(--color-alert-red);
+}
+
+.status-indicator.normal-risk {
+    color: var(--color-alert-green);
+    background-color: #ddffdd;
+    border: 1px solid var(--color-alert-green);
+}
+
+/* Alert Banner */
+.alert-banner {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    display: none; /* Hidden by default, shown by JS */
+}
+
+.alert-banner.critical {
+    background-color: var(--color-alert-red);
+}
+
+.alert-banner.warning {
+    background-color: var(--color-alert-orange);
+}
+
+/* Advisory and Charts */
+.advisory-card {
+    padding: 25px;
+    border-left: 5px solid var(--color-alert-green); /* Default to green */
+}
+
+.advisory-card.critical {
+    border-left-color: var(--color-alert-red);
+}
+
+.weekly-trends-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.chart-placeholder {
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e9e9e9;
+    color: #666;
+    font-style: italic;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+    margin: 40px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .welcome-message {
+        font-size: 1.5em;
+    }
+
+    .weather-cards {
+        flex-direction: column;
+    }
+
+    .weather-card {
+        flex: 1 1 100%;
+    }
+}
